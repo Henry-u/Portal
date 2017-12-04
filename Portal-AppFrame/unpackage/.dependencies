@@ -1,0 +1,31 @@
+{
+  "html/back.html": {
+    "href": "html/back.html",
+    "resources": [
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "js/jquery.min.js",
+      "js/mui.min.js",
+      "images/ICON_BACK.png"
+    ],
+    "priority": 0
+  },
+  "html/error.html": {
+    "href": "html/error.html",
+    "resources": [
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "js/jquery.min.js",
+      "js/mui.min.js"
+    ],
+    "priority": 1
+  },
+  "index.html": {
+    "href": "index.html",
+    "resources": [],
+    "refer": [
+      "html/error.html"
+    ],
+    "priority": 0
+  }
+}

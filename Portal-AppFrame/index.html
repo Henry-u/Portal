@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<body>
+	<div class="mui-content">
+	</div>
+    <script src="js/mui.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+		
+		mui.init();
+		
+		var sub = null;
+		mui.plusReady(function(){
+        	
+        	if(mui.os.ios){
+   		   		plus.navigator.setFullscreen(true);
+			}
+        	
+			var self = plus.webview.currentWebview();
+			var urlname = 'http://portal.lwphoenix.com.au';
+			var subpage_style = {
+				top: '0px',
+				bottom: '0px',
+				scalable: true,
+				errorPage: 'html/error.html'
+			};
+			sub = plus.webview.create(urlname, urlname, subpage_style);
+			var subpage_style2={
+	            	 bottom: '10px',
+			         height: '40px',
+			         width:'40px',
+			         left:'10px',
+			         background:"transparent"
+	            }
+			var sub2 = plus.webview.create('html/back.html', 'html/back.html', subpage_style2);
+			self.append(sub); 
+		    self.append(sub2);
+		    
+//			sub.addEventListener('loading', function() {
+//				console.log(sub.getURL());
+//				sub.canBack( function(e){
+//					console.log(e.canBack);
+//					if (e.canBack) {
+//						sub2.show();
+//					} else {
+//						sub2.hide();						
+//					}
+//				});
+//			});
+		})
+
+        var _back = mui.back;
+        mui.back = function(){
+            sub.canBack( function(e){
+                var canback = e.canBack;
+                if(canback){
+                    sub.back();
+                }else{
+                    _back();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
